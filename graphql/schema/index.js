@@ -31,6 +31,15 @@ input BlogInput {
     Image: String!
 }
 
+input BlogInputUpdate {
+    _id: String!
+    Title: String!
+    Excerpt: String!
+    Author: String!
+    Tag: String!
+    Image: String!
+}
+
 input UserInput {
     email: String!
     password: String
@@ -43,8 +52,8 @@ type RootQuery {
 
 type RootMutation {
     createBlog(blogInput: BlogInput): Blog
-    updateBlog(blogInput: BlogInput): Blog
-    deleteBlog(blogId: String!): Blog
+    updateBlog(blogInputUpdate: BlogInputUpdate): Blog
+    deleteBlog(blogId: String!): String
     createUser(userInput: UserInput): User
 }
 
