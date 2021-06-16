@@ -6,11 +6,12 @@ type Blog {
     Title: String!
     Excerpt: String!
     Author: String!
-    Tag: String!
-    Image: String!
-    CreateDate: String!
+    Tag: String
+    Image: BlogImageOutput
     Views: Int
     Likes: Int
+    createdAt: String
+    updatedAt: String
 }
 
 type Result {
@@ -56,6 +57,11 @@ input BlogInput {
     Image: BlogImage!
     Views: Int
     Likes: Int
+}
+
+type BlogImageOutput {
+    Content: String
+    Orientation: String
 }
 
 input BlogImage {
