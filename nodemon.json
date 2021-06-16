@@ -3,6 +3,7 @@
         "MONGO_USER": "martin-ns",
         "MONGO_PASSWORD": "A4Sp37szDMdOo3FP",
         "MONGO_DB": "blog-ns-assessment",
-        "SECRET_WORD": "assessmentnicasourcemartin"
+        "SECRET_WORD": "assessmentnicasourcemartin",
+        "PORT": 3001
     }
 }
