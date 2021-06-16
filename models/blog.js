@@ -20,7 +20,7 @@ const blogSchema = new Schema({
         required: true,
     },
     Image: {
-        data: Buffer,
+        data: String,
         contentType: String
     },
     creator: {

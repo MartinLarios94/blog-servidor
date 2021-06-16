@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     createBlog: async (args, req) => {
-        if (!req.isAuth) {
+        if (req.isAuth) {
             throw new Error('Unauthenticated');
         }
         const blog = new Blogs({
@@ -26,21 +26,19 @@ module.exports = {
             Tag: args.blogInput.Tag,
             Image: args.blogInput.Image
         });
-        let createdBlog;
         try {
             const result = await blog.save();
 
-            createdBlog = {
+            return {
                 ...result._doc
             }
-            return createdBlog;
+        
         } catch (error) {
             throw error;
         }
     },
     updateBlog: async (args, req) => {
         try {
-            let updatedBlog;
             if (!req.isAuth) {
                 throw new Error('Unauthenticated');
             }
@@ -57,11 +55,9 @@ module.exports = {
 
             const result = await findBlog.save();
 
-            updatedBlog = {
+            return  {
                 ...result._doc
             }
-
-            return updatedBlog;
 
         } catch (error) {
             throw error;
