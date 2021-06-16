@@ -2,6 +2,11 @@ const { buildSchema } = require('graphql')
 
 module.exports = buildSchema(`
 
+enum Sort{
+    ASC
+    DESC
+}
+
 type Blog {
     _id: ID!
     Title: String!
@@ -9,6 +14,9 @@ type Blog {
     Author: String!
     Tag: String!
     Image: String!
+    CreateDate: String!
+    Views: Int
+    Likes: Int
 }
 
 type User {
@@ -23,12 +31,25 @@ type AuthData {
     tokenExpiration: Int!
 }
 
+input SortBlogs{
+    CreateDate: Int
+}
+
+input PaginationBlogs{
+    limited: Int
+    start: Int
+    currentPage: Int
+}
+
 input BlogInput {
     Title: String!
     Excerpt: String!
     Author: String!
     Tag: String!
     Image: String!
+    CreateDate: String
+    Views: Int
+    Likes: Int
 }
 
 input BlogInputUpdate {
@@ -47,7 +68,9 @@ input UserInput {
 
 type RootQuery {
     blogs: [Blog!]!
+    sortBlogs(sort: SortBlogs): [[Blog!]]
     login(email: String!, password: String!): AuthData!
+    paginationBlogs: [Blog!]
 }
 
 type RootMutation {

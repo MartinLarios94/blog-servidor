@@ -20,8 +20,20 @@ const blogSchema = new Schema({
         required: true,
     },
     Image: {
-        data: String,
-        contentType: String
+        type: String,
+        required: true
+    },
+    CreateDate: {
+        type: Date,
+        required: true
+    },
+    Views: {
+        type: Number,
+        required: false
+    },
+    Likes: {
+        type: Number,
+        required: false
     },
     creator: {
         type: Schema.Types.ObjectId,
