@@ -15,7 +15,7 @@ connectionDatabase();
 app.use(cors());
 app.use( express.json({ extend: true }));
 
-const port = process.env.PORT || 8000;
+const port = process.env.port || 8000;
 app.use(isAuth);
 
 app.use(
