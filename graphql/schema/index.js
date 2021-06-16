@@ -68,7 +68,7 @@ input UserInput {
 
 type RootQuery {
     blogs: [Blog!]!
-    sortBlogs(sort: SortBlogs): [[Blog!]]
+    sortBlogs(sort: SortBlogs): [Blog!]
     login(email: String!, password: String!): AuthData!
     paginationBlogs: [Blog!]
 }
