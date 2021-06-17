@@ -19,6 +19,29 @@ module.exports = {
       throw err;
     }
   },
+  mostRecents: async () => {
+    try {
+      const horizontals = await Blogs.find()
+        .where("Image.Orientation")
+        .equals("horizontal")
+        .sort({ createdAt: "desc" })
+        .limit(2);
+
+      const verticals = await Blogs.find()
+        .where("Image.Orientation")
+        .equals("vertical")
+        .sort({ createdAt: "desc" })
+        .limit(3);
+
+      return {
+        horizontals,
+        verticals,
+      };
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  },
   createBlog: async (args, req) => {
     if (req.isAuth) {
       throw new Error("Unauthenticated");

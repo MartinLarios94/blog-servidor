@@ -85,6 +85,7 @@ input UserInput {
 
 type RootQuery {
     blogs(sort: SortBlogs, pagination: PaginationBlogs): Result!
+    mostRecents: MostRecents!
     login(email: String!, password: String!): AuthData!
 }
 
@@ -93,6 +94,11 @@ type RootMutation {
     updateBlog(blogInputUpdate: BlogInputUpdate): Blog
     deleteBlog(blogId: String!): String
     createUser(userInput: UserInput): User
+}
+
+type MostRecents {
+    horizontals: [Blog]
+    verticals: [Blog]
 }
 
 schema {
