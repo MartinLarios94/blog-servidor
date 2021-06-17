@@ -31,7 +31,7 @@ module.exports = {
         .where("Image.Orientation")
         .equals("vertical")
         .sort({ createdAt: "desc" })
-        .limit(3);
+        .limit(4);
 
       return {
         horizontals,
